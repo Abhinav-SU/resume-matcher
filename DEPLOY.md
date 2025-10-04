@@ -39,7 +39,7 @@ git push origin main
 In Streamlit Cloud app settings → Secrets, add:
 ```toml
 app_password = "YourSecurePassword"
-GEMINI_API_KEY = "AIzaSyDevJ2_L6JOVtgXw0mNrC9Mg1wrDxCYXn8"
+GEMINI_API_KEY = "your_gemini_api_key_here"
 ```
 
 ## 🌐 Add Custom Domain
