@@ -1,76 +1,294 @@
-# 🔍 AI Resume Matcher# 🔍 Resume Matcher App
+# Resume Matcher# Resume Matcher# Resume Matcher# 🔍 AI Resume Matcher# 🔍 Resume Matcher App
 
 
 
-AI-powered candidate ranking system using Google Gemini AI and machine learning to match resumes with job descriptions.An intelligent AI-powered resume matching application that uses Google Gemini embeddings to find the best candidates for job descriptions. Built with Streamlit for a modern, user-friendly interface.
+AI-powered resume ranking system that matches candidates to job descriptions using Google Gemini embeddings and machine learning.
 
 
 
-## Features## ✨ Features
+## What It DoesAI-powered resume ranking system that matches candidates to job descriptions using Google Gemini embeddings and machine learning.
 
 
 
-- 📄 Upload multiple resumes (PDF/DOCX)### 🎯 Core Functionality
-
-- 🤖 AI-powered similarity matching with Google Gemini- **Multi-format Support**: Upload PDF and DOCX resume files
-
-- 📊 Ranked candidate results with match scores- **AI-Powered Matching**: Uses Gemini embeddings for semantic similarity
-
-- 💡 AI-generated summaries explaining candidate fit- **Smart Ranking**: Cosine similarity algorithm ranks candidates by relevance
-
-- 🔒 Password-protected access- **Top 10 Results**: Displays the most relevant candidates with similarity scores
-
-- ⏱️ Rate limiting to prevent abuse
-
-### 🚀 Performance Optimizations
-
-## Quick Start- **Parallel Processing**: ThreadPoolExecutor for faster resume parsing
-
-- **Lazy Loading**: AI summaries generated only when viewing candidate profiles
-
-### 1. Install Dependencies- **Efficient File Handling**: Optimized text extraction and caching
-
-- **Comprehensive Logging**: Performance monitoring and debugging
-
-```bash
-
-python -m venv .venv### 🎨 User Experience
-
-.venv\Scripts\activate  # Windows- **Clean Table Layout**: Professional ranking display with clear metrics
-
-pip install -r requirements.txt- **Interactive Profiles**: Click-to-view detailed candidate information
-
-```- **File Preview**: PDF embedding + DOCX text view
-
-- **Download Functionality**: Easy access to original resume files
-
-### 2. Set Up API Key- **Responsive Design**: Wide layout optimized for better viewing
+Upload a job description and multiple resumes. The system ranks candidates by relevance using semantic similarity, showing you the best matches first with AI-generated fit summaries.
 
 
 
-Create a `.env` file:## 🛠️ Tech Stack
+## Features## What It DoesAI-powered resume matching application using Google Gemini AI to rank candidates based on job descriptions.
+
+
+
+- Supports PDF and DOCX resume formats
+
+- Uses Google Gemini AI for semantic matching
+
+- Ranks candidates by similarity scoreUpload a job description and multiple resumes. The system ranks candidates by relevance using semantic similarity, showing you the best matches first with AI-generated fit summaries.
+
+- Generates AI summaries explaining candidate fit
+
+- Password protected with rate limiting
+
+- Processes multiple resumes in parallel
+
+## Features## FeaturesAI-powered candidate ranking system using Google Gemini AI and machine learning to match resumes with job descriptions.An intelligent AI-powered resume matching application that uses Google Gemini embeddings to find the best candidates for job descriptions. Built with Streamlit for a modern, user-friendly interface.
+
+## Installation
+
+
+
+Install dependencies:
+
+- Supports PDF and DOCX resume formats
+
+pip install -r requirements.txt
+
+- Uses Google Gemini AI for semantic matching
+
+Create .env file with your Gemini API key:
+
+- Ranks candidates by similarity score- Upload multiple resumes (PDF/DOCX format)
+
+GEMINI_API_KEY=your_key_here
+
+- Generates AI summaries explaining candidate fit
+
+Get API key from: https://aistudio.google.com/app/apikey
+
+- Password protected with rate limiting- AI-powered semantic matching using Google Gemini
+
+## Usage
+
+- Processes multiple resumes in parallel
+
+Run the app:
+
+- Automatic candidate ranking by relevance## Features## ✨ Features
+
+streamlit run app.py
+
+## Installation
+
+Open browser to http://localhost:8501
+
+- AI-generated fit summaries for each candidate
+
+## How It Works
+
+Install dependencies:
+
+1. Extracts text from PDF/DOCX files
+
+2. Generates embeddings using Gemini API- Password-protected access
+
+3. Calculates cosine similarity between job description and resumes
+
+4. Ranks candidates by similarity scorepip install -r requirements.txt
+
+5. Generates AI summaries for top candidates on-demand
+
+- Rate limiting (5 batches/hour, 20/day per user)
+
+## Tech Stack
+
+Create .env file with your Gemini API key:
+
+- Streamlit - Web interface
+
+- Google Gemini AI - Embeddings and text generation- 📄 Upload multiple resumes (PDF/DOCX)### 🎯 Core Functionality
+
+- Scikit-learn - Cosine similarity calculation
+
+- PyMuPDF - PDF text extractionGEMINI_API_KEY=your_key_here
+
+- python-docx - DOCX text extraction
+
+## Installation
+
+## Security
+
+Get API key from: https://aistudio.google.com/app/apikey
+
+- Password authentication
+
+- Rate limiting: 5 batches per hour, 20 per day- 🤖 AI-powered similarity matching with Google Gemini- **Multi-format Support**: Upload PDF and DOCX resume files
+
+- Usage logging
+
+- API quota protection## Usage
+
+
+
+## Project Structure1. Clone the repository
+
+
+
+app.py - Main application with password protection and rate limitingRun the app:
+
+gemini_api.py - Gemini API integration for embeddings and summaries
+
+matcher.py - Resume ranking logic using cosine similarity```bash- 📊 Ranked candidate results with match scores- **AI-Powered Matching**: Uses Gemini embeddings for semantic similarity
+
+utils.py - PDF and DOCX text extraction
+
+logger.py - Logging configurationstreamlit run app.py
+
+tests/ - Unit tests
+
+git clone https://github.com/Abhinav-SU/resume-matcher-app.git
+
+## License
+
+Open browser to http://localhost:8501
+
+MIT
+
+cd resume-matcher-app- 💡 AI-generated summaries explaining candidate fit- **Smart Ranking**: Cosine similarity algorithm ranks candidates by relevance
+
+## How It Works
 
 ```
 
-GEMINI_API_KEY=your_gemini_api_key_here- **Frontend**: Streamlit 1.35.0
+1. Extracts text from PDF/DOCX files
 
-```- **AI/ML**: Google Gemini API (embeddings + summaries)
+2. Generates embeddings using Gemini API- 🔒 Password-protected access- **Top 10 Results**: Displays the most relevant candidates with similarity scores
 
-- **Similarity**: scikit-learn (cosine similarity)
+3. Calculates cosine similarity between job description and resumes
 
-Get your free API key from: https://aistudio.google.com/app/apikey- **File Processing**: PyMuPDF (PDF), python-docx (DOCX)
+4. Ranks candidates by similarity score2. Install dependencies
 
-- **Configuration**: python-dotenv
+5. Generates AI summaries for top candidates on-demand
 
-### 3. Configure Password
+```bash- ⏱️ Rate limiting to prevent abuse
 
-## 📦 Installation
+## Tech Stack
 
-Edit `.streamlit/secrets.toml`:
+pip install -r requirements.txt
+
+- Streamlit - Web interface
+
+- Google Gemini AI - Embeddings and text generation```### 🚀 Performance Optimizations
+
+- Scikit-learn - Cosine similarity calculation
+
+- PyMuPDF - PDF text extraction
+
+- python-docx - DOCX text extraction
+
+3. Set up environment variables## Quick Start- **Parallel Processing**: ThreadPoolExecutor for faster resume parsing
+
+## Security
+
+```bash
+
+- Password authentication
+
+- Rate limiting: 5 batches per hour, 20 per day# Create .env file- **Lazy Loading**: AI summaries generated only when viewing candidate profiles
+
+- Usage logging
+
+- API quota protectionGEMINI_API_KEY=your_api_key_here
+
+
+
+## Project Structure```### 1. Install Dependencies- **Efficient File Handling**: Optimized text extraction and caching
+
+
+
+app.py - Main application with password protection and rate limiting
+
+gemini_api.py - Gemini API integration for embeddings and summaries
+
+matcher.py - Resume ranking logic using cosine similarityGet your API key from: https://aistudio.google.com/app/apikey- **Comprehensive Logging**: Performance monitoring and debugging
+
+utils.py - PDF and DOCX text extraction
+
+logger.py - Logging configuration
+
+tests/ - Unit tests
+
+4. Configure password (optional)```bash
+
+## License
+
+```bash
+
+MIT
+
+# Edit .streamlit/secrets.tomlpython -m venv .venv### 🎨 User Experience
+
+app_password = "your_password"
+
+```.venv\Scripts\activate  # Windows- **Clean Table Layout**: Professional ranking display with clear metrics
+
+
+
+## Usagepip install -r requirements.txt- **Interactive Profiles**: Click-to-view detailed candidate information
+
+
+
+Run the application:```- **File Preview**: PDF embedding + DOCX text view
+
+```bash
+
+streamlit run app.py- **Download Functionality**: Easy access to original resume files
+
+```
+
+### 2. Set Up API Key- **Responsive Design**: Wide layout optimized for better viewing
+
+Open your browser to `http://localhost:8501`
+
+
+
+## Tech Stack
+
+Create a `.env` file:## 🛠️ Tech Stack
+
+- **Python 3.11+**
+
+- **Streamlit** - Web framework```
+
+- **Google Gemini AI** - Embeddings and summaries
+
+- **Scikit-learn** - Similarity scoringGEMINI_API_KEY=your_gemini_api_key_here- **Frontend**: Streamlit 1.35.0
+
+- **PyMuPDF** - PDF processing
+
+- **python-docx** - DOCX processing```- **AI/ML**: Google Gemini API (embeddings + summaries)
+
+
+
+## Project Structure- **Similarity**: scikit-learn (cosine similarity)
+
+
+
+```Get your free API key from: https://aistudio.google.com/app/apikey- **File Processing**: PyMuPDF (PDF), python-docx (DOCX)
+
+resume-matcher-app/
+
+├── app.py              # Main application- **Configuration**: python-dotenv
+
+├── gemini_api.py       # Gemini API integration
+
+├── matcher.py          # Resume ranking logic### 3. Configure Password
+
+├── utils.py            # File processing utilities
+
+├── logger.py           # Logging configuration## 📦 Installation
+
+├── requirements.txt    # Dependencies
+
+└── tests/              # Unit testsEdit `.streamlit/secrets.toml`:
+
+```
 
 ```toml### Prerequisites
 
+## License
+
 app_password = "your_secure_password"- Python 3.8+
+
+MIT License
 
 ```- Google Gemini API key
 
