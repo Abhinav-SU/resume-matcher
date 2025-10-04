@@ -36,6 +36,13 @@ def get_embedding(text):
             logger.warning("Empty text provided for embedding")
             return np.zeros(768)  # Default embedding size
 
+        # Truncate if text is too large (Gemini has ~30KB limit)
+        # Keep first 20000 chars to be safe (roughly 20KB)
+        max_chars = 20000
+        if len(text) > max_chars:
+            logger.warning("Text too large (%d chars), truncating to %d chars", len(text), max_chars)
+            text = text[:max_chars]
+
         # Generate embedding
         result = genai.embed_content(
             model='models/embedding-001',
@@ -64,6 +71,12 @@ def get_embedding(text):
 
 def generate_fit_summary(job_desc, resume_text):
     """Generate a summary of how well a resume matches a job description."""
+    # Truncate resume if too large to avoid API limits
+    max_resume_chars = 15000
+    if len(resume_text) > max_resume_chars:
+        logger.warning("Resume too large for summary (%d chars), truncating to %d", len(resume_text), max_resume_chars)
+        resume_text = resume_text[:max_resume_chars] + "\n...(truncated)"
+    
     prompt = f"""
 You are helping match resumes to job descriptions.
 
@@ -79,7 +92,7 @@ Explain briefly why this candidate is a good match for this job.
     try:
         _ensure_api_key()
         start = time.time()
-        model = genai.GenerativeModel('models/gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         response = model.generate_content(prompt)
         summary = response.text.strip()
         logger.info("Gemini summary success (%.2fs)", time.time() - start)

@@ -1,110 +1,251 @@
-# 🔍 Resume Matcher App
+# 🔍 AI Resume Matcher# 🔍 Resume Matcher App
 
-An intelligent AI-powered resume matching application that uses Google Gemini embeddings to find the best candidates for job descriptions. Built with Streamlit for a modern, user-friendly interface.
 
-## ✨ Features
 
-### 🎯 Core Functionality
-- **Multi-format Support**: Upload PDF and DOCX resume files
-- **AI-Powered Matching**: Uses Gemini embeddings for semantic similarity
-- **Smart Ranking**: Cosine similarity algorithm ranks candidates by relevance
-- **Top 10 Results**: Displays the most relevant candidates with similarity scores
+AI-powered candidate ranking system using Google Gemini AI and machine learning to match resumes with job descriptions.An intelligent AI-powered resume matching application that uses Google Gemini embeddings to find the best candidates for job descriptions. Built with Streamlit for a modern, user-friendly interface.
+
+
+
+## Features## ✨ Features
+
+
+
+- 📄 Upload multiple resumes (PDF/DOCX)### 🎯 Core Functionality
+
+- 🤖 AI-powered similarity matching with Google Gemini- **Multi-format Support**: Upload PDF and DOCX resume files
+
+- 📊 Ranked candidate results with match scores- **AI-Powered Matching**: Uses Gemini embeddings for semantic similarity
+
+- 💡 AI-generated summaries explaining candidate fit- **Smart Ranking**: Cosine similarity algorithm ranks candidates by relevance
+
+- 🔒 Password-protected access- **Top 10 Results**: Displays the most relevant candidates with similarity scores
+
+- ⏱️ Rate limiting to prevent abuse
 
 ### 🚀 Performance Optimizations
-- **Parallel Processing**: ThreadPoolExecutor for faster resume parsing
+
+## Quick Start- **Parallel Processing**: ThreadPoolExecutor for faster resume parsing
+
 - **Lazy Loading**: AI summaries generated only when viewing candidate profiles
-- **Efficient File Handling**: Optimized text extraction and caching
+
+### 1. Install Dependencies- **Efficient File Handling**: Optimized text extraction and caching
+
 - **Comprehensive Logging**: Performance monitoring and debugging
 
-### 🎨 User Experience
-- **Clean Table Layout**: Professional ranking display with clear metrics
-- **Interactive Profiles**: Click-to-view detailed candidate information
-- **File Preview**: PDF embedding + DOCX text view
+```bash
+
+python -m venv .venv### 🎨 User Experience
+
+.venv\Scripts\activate  # Windows- **Clean Table Layout**: Professional ranking display with clear metrics
+
+pip install -r requirements.txt- **Interactive Profiles**: Click-to-view detailed candidate information
+
+```- **File Preview**: PDF embedding + DOCX text view
+
 - **Download Functionality**: Easy access to original resume files
-- **Responsive Design**: Wide layout optimized for better viewing
 
-## 🛠️ Tech Stack
+### 2. Set Up API Key- **Responsive Design**: Wide layout optimized for better viewing
 
-- **Frontend**: Streamlit 1.35.0
-- **AI/ML**: Google Gemini API (embeddings + summaries)
+
+
+Create a `.env` file:## 🛠️ Tech Stack
+
+```
+
+GEMINI_API_KEY=your_gemini_api_key_here- **Frontend**: Streamlit 1.35.0
+
+```- **AI/ML**: Google Gemini API (embeddings + summaries)
+
 - **Similarity**: scikit-learn (cosine similarity)
-- **File Processing**: PyMuPDF (PDF), python-docx (DOCX)
+
+Get your free API key from: https://aistudio.google.com/app/apikey- **File Processing**: PyMuPDF (PDF), python-docx (DOCX)
+
 - **Configuration**: python-dotenv
+
+### 3. Configure Password
 
 ## 📦 Installation
 
-### Prerequisites
-- Python 3.8+
-- Google Gemini API key
+Edit `.streamlit/secrets.toml`:
 
-### Local Setup
+```toml### Prerequisites
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/resume-matcher-app.git
+app_password = "your_secure_password"- Python 3.8+
+
+```- Google Gemini API key
+
+
+
+### 4. Run the App### Local Setup
+
+
+
+```bash1. **Clone the repository**
+
+streamlit run app.py   ```bash
+
+```   git clone https://github.com/yourusername/resume-matcher-app.git
+
    cd resume-matcher-app
-   ```
 
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+Visit: http://localhost:8501   ```
 
-3. **Set up environment variables**
+
+
+## Deploy to Streamlit Cloud (FREE)2. **Install dependencies**
+
    ```bash
-   cp .env.example .env
+
+### 1. Push to GitHub   pip install -r requirements.txt
+
+```bash   ```
+
+git add .
+
+git commit -m "Initial commit"3. **Set up environment variables**
+
+git push origin main   ```bash
+
+```   cp .env.example .env
+
    # Edit .env and add your Gemini API key
+
+### 2. Deploy   ```
+
+1. Go to https://share.streamlit.io/
+
+2. Sign in with GitHub4. **Get your Gemini API key**
+
+3. Click "New app"   - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+
+4. Select your repo and `app.py`   - Create a new API key
+
+5. Add secrets in Settings:   - Add it to your `.env` file:
+
+   ```toml     ```
+
+   app_password = "your_password"     GEMINI_API_KEY=your_actual_api_key_here
+
+   GEMINI_API_KEY = "your_api_key"     ```
+
    ```
 
-4. **Get your Gemini API key**
-   - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Create a new API key
-   - Add it to your `.env` file:
-     ```
-     GEMINI_API_KEY=your_actual_api_key_here
-     ```
+6. Click Deploy5. **Run the application**
 
-5. **Run the application**
    ```bash
-   streamlit run app.py
+
+### 3. Custom Domain (Optional)   streamlit run app.py
+
    ```
 
-## 🚀 Deployment
+Add a CNAME record in your DNS:
 
-### Streamlit Cloud Deployment
+- **Name:** `resume` (or subdomain you want)### Windows (PowerShell) Quick Start
 
-1. **Push to GitHub**
+- **Target:** `your-app-name.streamlit.app`
+
+1. **Run the setup script** (creates a venv and installs dependencies):
+
+Access at: `https://resume.yourdomain.com`   ```powershell
+
+   ./setup_windows.ps1
+
+## Tech Stack   ```
+
+
+
+- **Python 3.11+**2. **Activate the virtual environment and run the app**:
+
+- **Streamlit** - Web framework   ```powershell
+
+- **Google Gemini AI** - Embeddings and text generation   ./run_windows.ps1
+
+- **Scikit-learn** - Cosine similarity matching   ```
+
+- **PyMuPDF** - PDF text extraction
+
+- **python-docx** - DOCX text extraction3. **Run tests** (from project root, venv activated):
+
+   ```powershell
+
+## Security Features   pytest -q
+
+   ```
+
+- **Password Protection** - Only authorized users can access
+
+- **Rate Limiting** - 5 batches/hour, 20/day per user## 🚀 Deployment
+
+- **API Quotas** - Stays within free tier limits
+
+- **Usage Logging** - Track all requests### Streamlit Cloud Deployment
+
+
+
+## Project Structure1. **Push to GitHub**
+
    ```bash
-   git add .
-   git commit -m "Initial commit: Resume Matcher App"
-   git push origin main
-   ```
 
-2. **Deploy on Streamlit Cloud**
-   - Visit [share.streamlit.io](https://share.streamlit.io)
-   - Connect your GitHub account
-   - Select the `resume-matcher-app` repository
-   - Set the main file path: `app.py`
+```   git add .
 
-3. **Configure Environment Variables**
-   - In Streamlit Cloud dashboard, go to "Settings"
+resume-matcher-app/   git commit -m "Initial commit: Resume Matcher App"
+
+├── app.py              # Main Streamlit application   git push origin main
+
+├── gemini_api.py       # Google Gemini API wrapper   ```
+
+├── matcher.py          # Resume ranking logic
+
+├── utils.py            # Text extraction utilities2. **Deploy on Streamlit Cloud**
+
+├── logger.py           # Logging configuration   - Visit [share.streamlit.io](https://share.streamlit.io)
+
+├── requirements.txt    # Python dependencies   - Connect your GitHub account
+
+├── .env               # API keys (create this)   - Select the `resume-matcher-app` repository
+
+├── .streamlit/   - Set the main file path: `app.py`
+
+│   └── secrets.toml   # App password (create this)
+
+└── tests/             # Unit tests3. **Configure Environment Variables**
+
+```   - In Streamlit Cloud dashboard, go to "Settings"
+
    - Add environment variable:
-     - **Key**: `GEMINI_API_KEY`
-     - **Value**: Your Gemini API key
-   - Deploy the app
 
-### Alternative Deployment Options
+## Cost     - **Key**: `GEMINI_API_KEY`
+
+     - **Value**: Your Gemini API key
+
+**100% FREE** with:   - Deploy the app
+
+- Streamlit Community Cloud (free tier)
+
+- Google Gemini API (free tier: 1,500 requests/day)### Alternative Deployment Options
+
+- Rate limiting keeps you under quota limits
 
 - **Heroku**: Use the Procfile and requirements.txt
-- **Docker**: Build with the provided Dockerfile
+
+## License- **Docker**: Build with the provided Dockerfile
+
 - **Local Server**: Run with `streamlit run app.py --server.port 8501`
+
+MIT License - Feel free to use for your portfolio!
 
 ## 📁 Project Structure
 
+## Author
+
 ```
-resume-matcher-app/
-├── app.py                 # Main Streamlit application
-├── matcher.py             # Cosine similarity & ranking logic
+
+Built by [Your Name]resume-matcher-app/
+
+- Portfolio: https://yourdomain.com├── app.py                 # Main Streamlit application
+
+- GitHub: https://github.com/yourusername├── matcher.py             # Cosine similarity & ranking logic
+
 ├── gemini_api.py          # Gemini API wrapper
 ├── utils.py               # File processing utilities
 ├── logger.py              # Shared logging configuration

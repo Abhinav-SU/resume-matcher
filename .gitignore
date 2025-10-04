@@ -39,10 +39,12 @@ ENV/
 Thumbs.db
 
 # Streamlit
-.streamlit/
+.streamlit/cache/
+.streamlit/secrets.toml
 
 # Logs
 *.log
+usage_logs.json
 
 # Temporary files
 *.tmp

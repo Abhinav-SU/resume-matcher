@@ -45,6 +45,14 @@ def test_generate_fit_summary(monkeypatch):
 
 
 def test_generate_fit_summary_missing_key(monkeypatch):
+    # Prevent .env file from being loaded by patching before reload
+    import os
+    original_getenv = os.getenv
+    def fake_getenv(key, default=None):
+        if key == "GEMINI_API_KEY":
+            return None
+        return original_getenv(key, default)
+    monkeypatch.setattr(os, 'getenv', fake_getenv)
     gemini_api = reload_module(monkeypatch, key_present=False)
     with pytest.raises(gemini_api.MissingAPIKeyError):
         gemini_api.generate_fit_summary("job", "resume")
